@@ -1,8 +1,9 @@
 import React from 'react';
-import './day.css';
 
-const DayView = ({value, isToday, ...props}) => (
-    <div className="day-view">
+
+
+const DayView = ({value, isToday, onSelectDate, ...props}) => (
+    <div onClick={() => onSelectDate && onSelectDate(value)} className="day-view">
         {value}
     </div>
 )

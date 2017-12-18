@@ -1,32 +1,41 @@
 import React from 'react';
 import Day from './Day';
-import './week.css';
 
-const filler = dayStart => {
-    let filler = [];
-    for(let i=0; i<dayStart; i++){
-        filler.push(<Day key={'filler'+i} />)
+class WeekView extends React.Component{
+
+    filler = dayStart => {
+        let filler = [];
+        for(let i=0; i<dayStart; i++){
+            filler.push(<Day key={'filler'+i} />)
+        }
+        return filler;
     }
-    return filler;
+
+    weekDays = (minDate, dayStart, dayEnd, onSelectDate) => {
+        let weekDays = [];
+        dayStart = dayStart?dayStart:0;
+        let date = minDate;
+        for(let i=dayStart; i<=dayEnd; i++){
+            weekDays.push(<Day onSelectDate={onSelectDate} key={'day'+date} value={date} />)
+            date++;
+        }
+        return weekDays;
+    }
+
+    render(){
+        const {dayStart, dayEnd, minDate, onSelectDate} = this.props;
+        return(
+            <div className="week-view">
+                {this.filler(dayStart)}
+                {this.weekDays(minDate,dayStart, dayEnd, onSelectDate)}
+                {this.filler(6-dayEnd)}
+            </div>
+        )
+    }
+
 }
 
-const weekDays = (minDate, dayStart, dayEnd) => {
-    let weekDays = [];
-    dayStart = dayStart?dayStart:0;
-    let date = minDate;
-    for(let i=dayStart; i<=dayEnd; i++){
-        weekDays.push(<Day key={'day'+date} value={date} />)
-        date++;
-    }
-    return weekDays;
-}
 
-const WeekView = ({dayStart, dayEnd, minDate, ...props}) => (
-    <div className="week-view">
-        {filler(dayStart)}
-        {weekDays(minDate,dayStart, dayEnd)}
-        {filler(6-dayEnd)}
-    </div>
-)
+
 
 export default WeekView;

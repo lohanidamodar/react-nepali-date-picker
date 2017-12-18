@@ -1,13 +1,13 @@
-var NepaliDates = (function(){
-	function zeroFill(num, targetLength, forceSign) {
+const DevnagariDates = {
+	zeroFill(num, targetLength, forceSign) {
 		var absNumber = '' + Math.abs(num), zerosToFill = targetLength - absNumber.length, sign = num >= 0;
 		return (sign ? (forceSign ? '+' : '') : '-') +
 		Math.pow(10, Math.max(0, zerosToFill)).toString().substr(1) + absNumber;
-	}
-	function getNeYear (digit) {
-		var nDigits = ['०','१','२','३','४','५','६','७','८','९'],
-		digits = digit.toString().split(''),
-		output = [];
+	},
+	getNeYear (digit) {
+		var nDigits = ['०','१','२','३','४','५','६','७','८','९'];
+		var digits = digit.toString().split('');
+		var output = [];
 		if(digits.length > 4) {
 			output = "This method doesn't support more than 4 strings.";
 			digits.length = 4;
@@ -21,11 +21,11 @@ var NepaliDates = (function(){
 			}
 		}
 		return output.join('');
-	}
-	function getNeMonthName (digit) {
+	},
+	getNeMonthName (digit) {
 		var nMonths = ['बैशाख','जेठ','असार','साउन','भदौ','असोज','कार्तिक','मङि्सर','पुष','माघ','फागुन','चैत'];
-		digit = parseInt(digit, 10) - 1,
-		output = '';
+		digit = parseInt(digit, 10) - 1;
+		var output = '';
 		if(digit > 11) {
 			output = "Month digit can't be more than 12. Falliing back to 1.";
 			digit = 0;
@@ -37,11 +37,11 @@ var NepaliDates = (function(){
 			}
 		};
 		return output;
-	}
-	function getNeWeekName (digit) {
+	},
+	getNeWeekName (digit) {
 		var nWeeks = ['आइतबार','सोमबार','मङ्गलबार','बुधबार','बिहिबार','शुक्रबार','शनिबार'];
-		digit = parseInt(digit, 10) - 1,
-		output = '';
+		digit = parseInt(digit, 10) - 1;
+		var output = '';
 		if(digit > 6) {
 			output = "Week digit can't be more than 7. Falliing back to 1.";
 			digit = 0;
@@ -54,9 +54,6 @@ var NepaliDates = (function(){
 		};
 		return output;
 	}
-	return {
-		getNumber: getNeYear,
-		getMonth: getNeMonthName,
-		getWeek: getNeWeekName
-	}
-})();
+}
+
+export default DevnagariDates;
