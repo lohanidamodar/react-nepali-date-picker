@@ -1,0 +1,14 @@
+.week-view, .week-header{
+    display: flex;
+    flex-direction: 'row';
+    border-top: 1px solid #006699;
+    width: 218px;
+    flex-basis: auto;
+}
+.week-header .day-view{
+    background-color: #006699;
+    color: #fff;
+}
+.week-view:last-child{
+    border-bottom: 1px solid #006699;
+}
