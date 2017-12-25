@@ -53,4 +53,8 @@ class NepaliDateSelect extends Component {
   }
 }
 
+NepaliDateSelect.propTypes = {
+  onChange: PropTypes.func.isRequired
+}
+
 export default NepaliDateSelect;
