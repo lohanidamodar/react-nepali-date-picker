@@ -5,10 +5,13 @@ import NepaliDateSelect from './nepali-date/NepaliDateSelect';
 
 
 class App extends Component {
+  handleDateChange = (date) => {
+    console.log(date);
+  }
   render() {
     return (
       <div ref={this.setWrapperRef} className="App">
-        <NepaliDateSelect />
+        <NepaliDateSelect onChange={this.handleDateChange} />
       </div>
     );
   }
