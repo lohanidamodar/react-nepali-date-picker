@@ -1,7 +1,6 @@
 import React from 'react';
 import Month from './Month';
 import CalendarHeader from './CalendarHeader';
-import DevnagariDates from './DevnagariDates';
 import NepaliDateData from './nepali-date-data.json';
 
 class PopupDialog extends React.Component{
@@ -48,7 +47,7 @@ class PopupDialog extends React.Component{
         let endDate = NepaliDateData[year][month - 1].endDate;
         return(
             <div className="popup-dialog">
-                <CalendarHeader onClickNext={this.handleNextClick} onClickPrevious={this.handlePreviousClick} month={DevnagariDates.getNeMonthName(month)} year={DevnagariDates.getNeYear(year)} />
+                <CalendarHeader onClickNext={this.handleNextClick} onClickPrevious={this.handlePreviousClick} month={month} year={year} />
                 <Month onSelectDate={this.handleSelectDate} weekStart={weekStart} endDate={endDate} />
             </div>
         )

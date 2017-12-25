@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import PopupDialog from './PopupDialog';
 import NepaliDate from './NepaliDate';
 import './calendar.css';
@@ -34,10 +35,12 @@ class NepaliDateSelect extends Component {
   }
 
   handleDateSelect = ({year,month,day}) => {
+    let date = year + "/" + month + "/" + day;
     this.setState({
-      date: year + "/" + month + "/" + day,
+      date: date,
       isVisible: false
     })
+    this.props.onChange(date)
   }
 
   render() {
@@ -48,6 +51,10 @@ class NepaliDateSelect extends Component {
       </div>
     );
   }
+}
+
+NepaliDateSelect.propTypes = {
+  onChange: PropTypes.func.isRequired
 }
 
 export default NepaliDateSelect;
