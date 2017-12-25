@@ -3,7 +3,7 @@ import Week from './Week'
 import Day from './Day';
 
 const days = ["S","M","T","W","T","F","S"]
-
+const devnagariDays = ["आ","सो","मं","बु","बि","शु","श"]
 class Month extends React.Component{
 
     weeks = () => {
@@ -24,7 +24,7 @@ class Month extends React.Component{
         return(
             <div className="month-view">
                 <div className="week-header">
-                    {days.map((value,index)=>{
+                    {devnagariDays.map((value,index)=>{
                         return <Day key={'header-days'+index} value={value} />
                     })}
                 </div>

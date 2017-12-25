@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import PopupDialog from './PopupDialog';
 import NepaliDate from './NepaliDate';
 import './calendar.css';
+import DevnagariDates from './DevnagariDates';
 
 
 class NepaliDateSelect extends Component {
@@ -36,8 +37,9 @@ class NepaliDateSelect extends Component {
 
   handleDateSelect = ({year,month,day}) => {
     let date = year + "/" + month + "/" + day;
+    let dateDevnagari = DevnagariDates.getNeYear(year) + '/' + DevnagariDates.getNeYear(month) + '/' + DevnagariDates.getNeYear(day);
     this.setState({
-      date: date,
+      date: dateDevnagari,
       isVisible: false
     })
     this.props.onChange(date)
